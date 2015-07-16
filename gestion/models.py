@@ -13,7 +13,7 @@ class Trabajadores(models.Model):
     dni = models.CharField(max_length=9)
     #anadimos el campo DNI para que no se pisen los nombres
     nombre = models.CharField(max_length=50)
-    sueldo_hora= models.FloatField()
+    sueldo_hora = models.FloatField()
     #es el estipulado en el contrato no el que producen según la aplicacion
 
 
@@ -37,3 +37,10 @@ class Trabajos(models.Model):
     #horas_cobrables = models.FloatField()
 
 #El eje central de la aplicacion son los trabajos, es un trabajo/tarea
+
+class proveedores(models.Model):
+    cif = models.CharField(max_length = 9)
+    nombreempresa = models.CharField(max_length = 200)
+    direccion = models.CharField(max_length = 200)
+    telefono = models.IntegerField()
+    # Añadimos proveedores con la infomacion  necesaria de cada uno de ellos
