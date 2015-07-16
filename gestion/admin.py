@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import *
 
-admin.site.register(Coche)
-admin.site.register(Trabajador)
-admin.site.register(Trabajo)
-admin.site.register(Pieza)
+admin.site.register(Coches)
+admin.site.register(Trabajadores)
+admin.site.register(Trabajos)
+admin.site.register(Piezas)
