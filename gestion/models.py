@@ -8,10 +8,13 @@ class Coches(models.Model):
     fecha_entrada= models.DateTimeField('fecha_entrada')
     fecha_salida= models.DateTimeField('fecha_salida')
     descripcion_averia = models.CharField(max_length=1000)
+    def __str__(self):
+        return self.matricula
 
     class Meta:
         verbose_name_plural = "Coches"
         verbose_name = "Coche"
+
 
 
 
