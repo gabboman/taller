@@ -9,6 +9,10 @@ class Coches(models.Model):
     fecha_salida= models.DateTimeField('fecha_salida')
     descripcion_averia = models.CharField(max_length=1000)
 
+    class Meta:
+        verbose_name_plural = "Coches"
+        verbose_name = "Coche"
+
 class Trabajadores(models.Model):
     dni = models.CharField(max_length=9)
     #anadimos el campo DNI para que no se pisen los nombres
