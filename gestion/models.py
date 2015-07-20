@@ -38,7 +38,7 @@ class Trabajos(models.Model):
 
 #El eje central de la aplicacion son los trabajos, es un trabajo/tarea
 
-class proveedores(models.Model):
+class Proveedores(models.Model):
     cif = models.CharField(max_length = 9)
     nombreempresa = models.CharField(max_length = 200)
     direccion = models.CharField(max_length = 200)
