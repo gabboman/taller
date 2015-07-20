@@ -13,6 +13,8 @@ class Coches(models.Model):
         verbose_name_plural = "Coches"
         verbose_name = "Coche"
 
+
+
 class Trabajadores(models.Model):
     dni = models.CharField(max_length=9)
     #anadimos el campo DNI para que no se pisen los nombres
@@ -20,12 +22,21 @@ class Trabajadores(models.Model):
     sueldo_hora = models.FloatField()
     #es el estipulado en el contrato no el que producen según la aplicacion
 
+    class Meta:
+        verbose_name_plural = "Trabajadores"
+        verbose_name = "Trabajadores"
+
 
 class Piezas(models.Model):
     coche = models.ForeignKey(Coches)
     nombre_pieza = models.CharField(max_length=200)
     precio = models.FloatField()
     fecha_entrada = models.DateTimeField('fecha_entrada_pieza')
+
+    class Meta:
+        verbose_name_plural = "Piezas"
+        verbose_name = "Piezas"
+
 
 
 class Trabajos(models.Model):
@@ -36,15 +47,20 @@ class Trabajos(models.Model):
     descripcion = models.CharField(max_length=1000)
     hora_inicio = models.TimeField()
     hora_final = models.TimeField()
-    #el numero de hora lo calculara la app, de manera que no haya fallos en el momento del computo
-    #horas_reales = models.FloatField()
-    #horas_cobrables = models.FloatField()
 
+    class Meta:
+        verbose_name_plural = "Trabajos"
+        verbose_name = "Trabajos"
 #El eje central de la aplicacion son los trabajos, es un trabajo/tarea
+
 
 class Proveedores(models.Model):
     cif = models.CharField(max_length = 9)
     nombreempresa = models.CharField(max_length = 200)
     direccion = models.CharField(max_length = 200)
     telefono = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Proveedores"
+        verbose_name = "Proveedores"
     # Añadimos proveedores con la infomacion  necesaria de cada uno de ellos
