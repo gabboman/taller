@@ -38,7 +38,7 @@ class Piezas(models.Model):
     precio = models.FloatField()
     fecha_entrada = models.DateTimeField('fecha_entrada_pieza')
     def __str__(self):
-        return self.nombre_pieza + " " + self.precio
+        return self.nombre_pieza + ' '  + self.precio.__str__()
 
     class Meta:
         verbose_name_plural = "Piezas"
