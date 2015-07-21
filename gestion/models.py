@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.core.validators import RegexValidator
 
 class Coches(models.Model):
     marca = models.CharField(max_length=50)
@@ -9,7 +10,7 @@ class Coches(models.Model):
     fecha_salida= models.DateTimeField('fecha_salida')
     descripcion_averia = models.CharField(max_length=1000)
     def __str__(self):
-        return self.matricula + " " + self.modelo
+        return self.matricula + " - " + self.modelo
 
     class Meta:
         verbose_name_plural = "Coches"
@@ -25,7 +26,7 @@ class Trabajadores(models.Model):
     sueldo_hora = models.FloatField()
     #es el estipulado en el contrato no el que producen según la aplicacion
     def __str__(self):
-        return self.nombre + " " + self.dni
+        return self.nombre + " - " + self.dni
 
     class Meta:
         verbose_name_plural = "Trabajadores"
@@ -38,7 +39,7 @@ class Piezas(models.Model):
     precio = models.FloatField()
     fecha_entrada = models.DateTimeField('fecha_entrada_pieza')
     def __str__(self):
-        return self.nombre_pieza + ' '  + self.precio.__str__()
+        return self.nombre_pieza + ' - '  + self.precio.__str__()
 
     class Meta:
         verbose_name_plural = "Piezas"
@@ -55,7 +56,7 @@ class Trabajos(models.Model):
     hora_inicio = models.TimeField()
     hora_final = models.TimeField()
     def __str__(self):
-        return self.fecha_trabajo + " " + self.coche + " " + self.trabajador
+        return self.fecha_trabajo + " - " + self.coche + " - " + self.trabajador
 
     class Meta:
         verbose_name_plural = "Trabajos"
@@ -67,18 +68,13 @@ class Proveedores(models.Model):
     cif = models.CharField(max_length = 9)
     nombreempresa = models.CharField(max_length = 200)
     direccion = models.CharField(max_length = 200)
-    telefono = models.IntegerField()
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="El número debe de tener el siguiente formato: '+999999999'. Hasta un máximo de 15 dígitos.")
+    telefono = models.CharField(validators=[phone_regex], blank=True, max_length = 15) # validators should be a list
     def __str__(self):
-        return self.nombreempresa + " " + self.cif
+        return self.nombreempresa + " - " + self.cif
 
 
     class Meta:
         verbose_name_plural = "Proveedores"
         verbose_name = "Proveedores"
     # Añadimos proveedores con la infomacion  necesaria de cada uno de ellos
-
-
-
-#para las funciones de cada una de las clases se debe de poner un campo que intifique a cada clase como unica o poner una clave primaria
-
-#debemos de solucionar los nuemero de telefono para que solo se admintan numero de telefono y no nuemeros enteros
