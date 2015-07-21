@@ -9,8 +9,7 @@ class Coches(models.Model):
     fecha_salida= models.DateTimeField('fecha_salida')
     descripcion_averia = models.CharField(max_length=1000)
     def __str__(self):
-        return self.matricula
-        return self.modelo
+        return self.matricula + " " + self.modelo
 
     class Meta:
         verbose_name_plural = "Coches"
@@ -26,8 +25,7 @@ class Trabajadores(models.Model):
     sueldo_hora = models.FloatField()
     #es el estipulado en el contrato no el que producen según la aplicacion
     def __str__(self):
-        return self.nombre
-        return self.dni
+        return self.nombre + " " + self.dni
 
     class Meta:
         verbose_name_plural = "Trabajadores"
@@ -40,8 +38,7 @@ class Piezas(models.Model):
     precio = models.FloatField()
     fecha_entrada = models.DateTimeField('fecha_entrada_pieza')
     def __str__(self):
-        return self.nombre_pieza
-        return self.precio
+        return self.nombre_pieza + " " + self.precio
 
     class Meta:
         verbose_name_plural = "Piezas"
@@ -58,9 +55,7 @@ class Trabajos(models.Model):
     hora_inicio = models.TimeField()
     hora_final = models.TimeField()
     def __str__(self):
-        return self.fecha_trabajo
-        return self.coche
-        return self.trabajador
+        return self.fecha_trabajo + " " + self.coche + " " + self.trabajador
 
     class Meta:
         verbose_name_plural = "Trabajos"
