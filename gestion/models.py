@@ -10,6 +10,7 @@ class Coches(models.Model):
     descripcion_averia = models.CharField(max_length=1000)
     def __str__(self):
         return self.matricula
+        return self.modelo
 
     class Meta:
         verbose_name_plural = "Coches"
@@ -26,6 +27,7 @@ class Trabajadores(models.Model):
     #es el estipulado en el contrato no el que producen según la aplicacion
     def __str__(self):
         return self.nombre
+        return self.dni
 
     class Meta:
         verbose_name_plural = "Trabajadores"
@@ -39,6 +41,7 @@ class Piezas(models.Model):
     fecha_entrada = models.DateTimeField('fecha_entrada_pieza')
     def __str__(self):
         return self.nombre_pieza
+        return self.precio
 
     class Meta:
         verbose_name_plural = "Piezas"
@@ -56,6 +59,8 @@ class Trabajos(models.Model):
     hora_final = models.TimeField()
     def __str__(self):
         return self.fecha_trabajo
+        return self.coche
+        return self.trabajador
 
     class Meta:
         verbose_name_plural = "Trabajos"
@@ -69,7 +74,8 @@ class Proveedores(models.Model):
     direccion = models.CharField(max_length = 200)
     telefono = models.IntegerField()
     def __str__(self):
-        return self.nombreempresa
+        return self.nombreempresa + " " + self.cif
+
 
     class Meta:
         verbose_name_plural = "Proveedores"
