@@ -56,6 +56,7 @@ class Trabajos(models.Model):
     fecha_trabajo= models.DateTimeField('fecha_trabajo')
     descripcion = models.CharField(max_length=1000)
     horas_facturables = models.FloatField()
+    horas_reales = models.FloatField()
     beneficio = models.FloatField()
     def __str__(self):
         return self.fecha_trabajo.__str__() + " - " + self.coche.__str__() + " - " + self.trabajador.__str__()
