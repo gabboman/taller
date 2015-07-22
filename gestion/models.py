@@ -9,6 +9,8 @@ class Coches(models.Model):
     fecha_entrada= models.DateTimeField('fecha_entrada')
     fecha_salida= models.DateTimeField('fecha_salida')
     descripcion_averia = models.CharField(max_length=1000)
+    posibles_estados=(('0','A la espera'),('1','En proceso'),('2','Finalizado'),('3','Pagado'))
+    estado = models.CharField(max_length = 1 , choices=posibles_estados)
     def __str__(self):
         return self.matricula + " - " + self.modelo
 
