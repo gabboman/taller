@@ -6,8 +6,8 @@ class Coches(models.Model):
     marca = models.CharField(max_length=50)
     modelo = models.CharField(max_length=200)
     matricula = models.CharField(max_length=25)
-    fecha_entrada= models.DateTimeField('fecha_entrada')
-    fecha_salida= models.DateTimeField('fecha_salida')
+    fecha_entrada= models.DateTimeField('Fecha entrada')
+    fecha_salida= models.DateTimeField('Fecha salida')
     descripcion_averia = models.CharField(max_length=1000)
     posibles_estados=(('0','A la espera'),('1','En proceso'),('2','Finalizado'),('3','Pagado'))
     estado = models.CharField(max_length = 1 , choices=posibles_estados)
@@ -37,9 +37,9 @@ class Trabajadores(models.Model):
 
 class Piezas(models.Model):
     coche = models.ForeignKey(Coches)
-    nombre_pieza = models.CharField(max_length=200)
+    nombre_pieza = models.CharField('Nombre de la pieza',max_length=200)
     precio = models.FloatField()
-    fecha_entrada = models.DateTimeField('fecha_entrada_pieza')
+    fecha_entrada = models.DateTimeField('Fecha de entrada la pieza')
     def __str__(self):
         return self.nombre_pieza + ' - '  + self.precio.__str__()
 
@@ -53,11 +53,11 @@ class Trabajos(models.Model):
     coche = models.ForeignKey(Coches)
     trabajador = models.ForeignKey(Trabajadores)
     pieza = models.ForeignKey(Piezas)
-    fecha_trabajo= models.DateTimeField('fecha_trabajo')
+    fecha_trabajo= models.DateTimeField('Fecha de intervención')
     descripcion = models.CharField(max_length=1000)
-    horas_facturables = models.FloatField()
-    horas_reales = models.FloatField()
-    beneficio = models.FloatField()
+    horas_facturables = models.FloatField('Horas facturables')
+    horas_reales = models.FloatField('Horas reales')
+    beneficios = models.FloatField()
     def __str__(self):
         return self.fecha_trabajo.__str__() + " - " + self.coche.__str__() + " - " + self.trabajador.__str__()
 
