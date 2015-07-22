@@ -56,7 +56,7 @@ class Trabajos(models.Model):
     hora_inicio = models.TimeField()
     hora_final = models.TimeField()
     def __str__(self):
-        return self.fecha_trabajo + " - " + self.coche + " - " + self.trabajador
+        return self.fecha_trabajo.__str__() + " - " + self.coche.__str__() + " - " + self.trabajador.__str__()
 
     class Meta:
         verbose_name_plural = "Trabajos"
