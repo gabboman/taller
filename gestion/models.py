@@ -55,8 +55,8 @@ class Trabajos(models.Model):
     pieza = models.ForeignKey(Piezas)
     fecha_trabajo= models.DateTimeField('fecha_trabajo')
     descripcion = models.CharField(max_length=1000)
-    hora_inicio = models.TimeField()
-    hora_final = models.TimeField()
+    horas_facturables = models.FloatField()
+    beneficio = models.FloatField()
     def __str__(self):
         return self.fecha_trabajo.__str__() + " - " + self.coche.__str__() + " - " + self.trabajador.__str__()
 
