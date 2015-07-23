@@ -17,6 +17,7 @@ class Coches(models.Model):
     class Meta:
         verbose_name_plural = "Coches"
         verbose_name = "Coche"
+    # class Meta sirve para poner el plural cuando se muestre en el navegador
 
 
 
@@ -63,7 +64,7 @@ class Trabajos(models.Model):
     class Meta:
         verbose_name_plural = "Trabajos"
         verbose_name = "Trabajos"
-#El eje central de la aplicacion son los trabajofnames, es un trabajo/tarea
+#El eje central de la aplicacion son los trabajos, no es un trabajo/tarea
 
 
 class Proveedores(models.Model):
@@ -80,3 +81,34 @@ class Proveedores(models.Model):
         verbose_name_plural = "Proveedores"
         verbose_name = "Proveedores"
     # Añadimos proveedores con la infomacion  necesaria de cada uno de ellos
+
+
+
+class Caja(models.Model):
+    saldo_base = models.FloatField()
+    descripcion = models.CharField(max_length = 200)
+
+    class Meta:
+        verbose_name_plural = "Caja"
+        verbose_name = "Caja"
+
+
+class Movimientos_de_caja(models.Model):
+    fecha = models.DateTimeField('Fecha del movimiento')
+    descripcion = models.CharField('Descripción del moviento', max_length = 200)
+    importe = models.FloatField()
+    coche = models.ForeignKey(Coches)
+    caja = models.ForeignKey(Caja)
+
+    class Meta:
+        verbose_name_plural = "Movimientos de caja"
+        verbose_name = "Movimientos de Caja"
+
+
+class Moviminetos_de_caja_archivados(models.Model):
+    movimientos = models.ForeignKey(Movimientos_de_caja)
+    fecha = models.DateTimeField('Fecha del movimiento')
+
+    class Meta:
+        verbose_name_plural = "Movimientos de caja archivados"
+        verbose_name = "Movimientos de caja archivados"
